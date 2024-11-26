@@ -1,15 +1,16 @@
 import React from "react";
-import SideBar from "./components/SideBar";
 import DiscussionsBox from "./components/DiscussionsBox";
+import SideBar from "./components/SideBar";
 import ChatBox from "./components/ChatBox";
-import 'remixicon/fonts/remixicon.css'
 
 function App() {
   return (
-    <div className="flex gap-10 p-10 h-screen w-full bg-black">
+    <div className="h-screen w-full flex">
       <SideBar />
-      <DiscussionsBox />
-      <ChatBox />
+      <div className="flex-1 w-full flex">
+        <DiscussionsBox />
+        <ChatBox />
+      </div>
     </div>
   );
 }
