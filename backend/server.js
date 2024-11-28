@@ -125,6 +125,7 @@ app.get("/messages/:userId", (req, res) => {
 });
 
 
+
 app.get("/search-users/:query", (req, res) => {
   const { query } = req.params;
 

@@ -3,6 +3,7 @@ import axios from "axios";
 
 function ChatBox({ selectedUser }) {
   const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState(""); // State for the new message input
 
   useEffect(() => {
     if (selectedUser) {
@@ -14,6 +15,21 @@ function ChatBox({ selectedUser }) {
         );
     }
   }, [selectedUser]);
+
+  const handleSendMessage = () => {
+    if (newMessage.trim()) {
+      const message = {
+        user_id: selectedUser.user_id,
+        content: newMessage,
+        type: "text", // You can handle different types like 'image' or 'file' here
+        isSent: true,
+        time: new Date().toLocaleTimeString(),
+      };
+
+      setMessages([...messages, message]);
+      setNewMessage("");
+    }
+  };
 
   return (
     <div className="w-9/12">
@@ -116,10 +132,12 @@ function ChatBox({ selectedUser }) {
               <input
                 className="w-full focus:outline-0"
                 type="text"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="Taper un message"
               />
             </div>
-            <div className="cursor-pointer">
+            <div className="cursor-pointer" onClick={handleSendMessage}>
               <ion-icon name="send-outline"></ion-icon>
             </div>
           </div>
