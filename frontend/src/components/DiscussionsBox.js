@@ -2,7 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import Discussions from "./Discussions";
 
-function DiscussionsBox() {
+function DiscussionsBox({ setSelectedUser }) {
   return (
     <div className="w-3/12 p-5 bg-white border border-gray-200 flex flex-col gap-3">
       <div className="flex items-center justify-between">
@@ -17,7 +17,8 @@ function DiscussionsBox() {
         </ul>
       </div>
       <SearchBar />
-      <Discussions />
+      {/* Passer setSelectedUser ici */}
+      <Discussions setSelectedUser={setSelectedUser} />
     </div>
   );
 }
